@@ -13,8 +13,6 @@ export default async function Page({
     params: await params,
   });
 
-  console.log(post);
-
   if (!post) {
     notFound();
   }

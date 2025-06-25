@@ -2,8 +2,6 @@ import Link from "next/link";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
 
-const options = { next: { revalidate: 60 } };
-
 export default async function Page() {
   const { data: posts } = await sanityFetch({ query: POSTS_QUERY });
 
