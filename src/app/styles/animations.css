@@ -1,0 +1,116 @@
+.pride-flag {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+  width: 200%;
+}
+
+.lava-rainbow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+
+  filter: blur(40px);
+}
+
+.lava-rainbow .blob {
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--color) 0%, transparent 70%);
+  will-change: transform;
+
+  mix-blend-mode: screen;
+}
+
+.lava-rainbow .blob:nth-child(1) {
+  --color: #e40303;
+  animation: rainbowBlob1 10s ease-in-out infinite alternate;
+}
+
+.lava-rainbow .blob:nth-child(2) {
+  --color: #ff8c00;
+  animation: rainbowBlob2 10s ease-in-out infinite alternate;
+}
+
+.lava-rainbow .blob:nth-child(3) {
+  --color: #ffed00;
+  animation: rainbowBlob3 10s ease-in-out infinite alternate;
+}
+
+.lava-rainbow .blob:nth-child(4) {
+  --color: #2ae650;
+  animation: rainbowBlob4 10s ease-in-out infinite alternate;
+}
+
+.lava-rainbow .blob:nth-child(5) {
+  --color: #004dff;
+  animation: rainbowBlob5 10s ease-in-out infinite alternate;
+}
+
+.lava-rainbow .blob:nth-child(6) {
+  --color: #750787;
+  animation: rainbowBlob6 10s ease-in-out infinite alternate;
+}
+
+@keyframes rainbowBlob1 {
+  0% {
+    transform: translate(10%, 20%);
+  }
+  100% {
+    transform: translate(80%, 60%);
+  }
+}
+
+@keyframes rainbowBlob2 {
+  0% {
+    transform: translate(70%, 20%);
+  }
+  100% {
+    transform: translate(20%, 80%);
+  }
+}
+
+@keyframes rainbowBlob3 {
+  0% {
+    transform: translate(30%, 70%);
+  }
+  100% {
+    transform: translate(60%, 40%);
+  }
+}
+
+@keyframes rainbowBlob4 {
+  0% {
+    transform: translate(80%, 70%);
+  }
+  100% {
+    transform: translate(40%, 30%);
+  }
+}
+
+@keyframes rainbowBlob5 {
+  0% {
+    transform: translate(20%, 50%);
+  }
+  100% {
+    transform: translate(70%, 30%);
+  }
+}
+
+@keyframes rainbowBlob6 {
+  0% {
+    transform: translate(50%, 10%);
+  }
+  100% {
+    transform: translate(30%, 90%);
+  }
+}

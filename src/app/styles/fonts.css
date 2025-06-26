@@ -1,0 +1,21 @@
+@font-face {
+  font-family: Faodu;
+  src: url("/fonts/Faodu/FaoduRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: EyesForSerifs;
+  src: url("/fonts/EyesForSerifs/EyesforSerifs-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@theme inline {
+  --font-faodu: "Faodu";
+}
+
+body {
+  font-family: "EyesForSerifs";
+}
