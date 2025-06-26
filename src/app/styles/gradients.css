@@ -1,0 +1,14 @@
+.gradient-background {
+  background:
+    url("/backgrounds/grain.svg"),
+    radial-gradient(
+      circle,
+      rgba(238, 174, 202, 1) 0%,
+      rgba(148, 187, 233, 1) 100%
+    );
+  background-repeat: repeat;
+  background-size:
+    200px 200px,
+    cover; /* First value is for SVG, second for gradient */
+  background-blend-mode: overlay;
+}
