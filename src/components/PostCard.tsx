@@ -1,13 +1,12 @@
-import { Author } from "@/components/Author";
 import { Categories } from "@/components/Categories";
-import { POSTS_QUERYResult } from "@/sanity/types";
+import { EVENTS_QUERYResult } from "@/sanity/types";
 import { PublishedAt } from "@/components/PublishedAt";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import Link from "next/link";
 
-export function PostCard(props: POSTS_QUERYResult[0]) {
-  const { title, author, mainImage, publishedAt, categories } = props;
+export function PostCard(props: EVENTS_QUERYResult[0]) {
+  const { title, mainImage, eventDate, categories } = props;
 
   return (
     <Link className="group" href={`/posts/${props.slug!.current}`}>
@@ -21,8 +20,7 @@ export function PostCard(props: POSTS_QUERYResult[0]) {
             <span className="bg-pink-50 z-0 absolute inset-0 rounded-lg opacity-0 transition-all group-hover:opacity-100 group-hover:scale-y-110 group-hover:scale-x-105 scale-75" />
           </h2>
           <div className="flex items-center mt-2 md:mt-6 gap-x-6">
-            <Author author={author} />
-            <PublishedAt publishedAt={publishedAt} />
+            <PublishedAt publishedAt={eventDate} />
           </div>
         </div>
         <div className="md:col-start-9 md:col-span-4 rounded-lg overflow-hidden flex">
