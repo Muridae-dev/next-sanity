@@ -35,6 +35,37 @@ export type Event = {
     _type: "image";
   };
   eventDate?: string;
+  shortDescription?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
   body?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -233,7 +264,7 @@ export type AllSanitySchemaTypes = Event | Category | BlockContent | SanityImage
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: EVENTS_QUERY
-// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc)[0...12]{  _id,  title,  slug,  mainImage,  eventDate,  body,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  )}
+// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc)[0...12]{  _id,  title,  slug,  mainImage,  eventDate,  shortDescription,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  )}
 export type EVENTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -252,7 +283,7 @@ export type EVENTS_QUERYResult = Array<{
     _type: "image";
   } | null;
   eventDate: string | null;
-  body: Array<{
+  shortDescription: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -348,7 +379,7 @@ export type EVENT_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc)[0...12]{\n  _id,\n  title,\n  slug,\n  mainImage,\n  eventDate,\n  body,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  )\n}": EVENTS_QUERYResult;
+    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc)[0...12]{\n  _id,\n  title,\n  slug,\n  mainImage,\n  eventDate,\n  shortDescription,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  )\n}": EVENTS_QUERYResult;
     "*[_type == \"event\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": EVENTS_SLUGS_QUERYResult;
     "*[_type == \"event\" && slug.current == $slug][0]{\n  _id,\n  title,\n  slug,\n  mainImage,\n  eventDate,\n  body,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  )\n}": EVENT_QUERYResult;
   }

@@ -46,6 +46,11 @@ export const eventType = defineType({
       type: "datetime",
     }),
     defineField({
+      title: "Front-page description",
+      name: "shortDescription",
+      type: "blockContent",
+    }),
+    defineField({
       title: "description",
       name: "body",
       type: "blockContent",

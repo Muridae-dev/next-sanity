@@ -7,7 +7,7 @@ export const EVENTS_QUERY =
   slug,
   mainImage,
   eventDate,
-  body,
+  shortDescription,
   "categories": coalesce(
     categories[]->{
       _id,
