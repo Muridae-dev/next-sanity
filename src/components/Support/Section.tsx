@@ -1,3 +1,4 @@
+import AnimatedText from "../AnimatedText";
 import SupportCard from "./Card";
 
 export default function SupportSection() {
@@ -21,17 +22,10 @@ export default function SupportSection() {
   ];
   return (
     <>
-      <div className="h-content w-full border-t border-b flex items-center gradient-background">
-        <h2 className="text-8xl w-fit h-fit pl-[12px] pr-[24px] font-faodu">
-          SUPPORTING PRIDE
+      <div className="h-content w-full border-t border-b flex justify-center items-center gradient-background">
+        <h2 className="text-8xl w-fit h-fit font-faodu">
+          <AnimatedText text="SUPPORTING PRIDE" />
         </h2>
-        <div className="h-[200px] border-l overflow-hidden relative">
-          <img
-            className="w-full translate-y-[-55%]"
-            src="/backgrounds/henningsvaer-torg.avif"
-            alt="something"
-          />
-        </div>
       </div>
       <div className="grid grid-cols-3 border-b gradient-background">
         {data.map((d) => (
