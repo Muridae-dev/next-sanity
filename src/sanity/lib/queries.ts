@@ -1,13 +1,13 @@
 import { defineQuery } from "next-sanity";
 
-export const POSTS_QUERY =
-  defineQuery(`*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{
+export const EVENTS_QUERY =
+  defineQuery(`*[_type == "event" && defined(slug.current)]|order(eventDate desc)[0...12]{
   _id,
   title,
   slug,
-  body,
   mainImage,
-  publishedAt,
+  eventDate,
+  shortDescription,
   "categories": coalesce(
     categories[]->{
       _id,
@@ -15,25 +15,22 @@ export const POSTS_QUERY =
       title
     },
     []
-  ),
-  author->{
-    name,
-    image
-  }
+  )
 }`);
 
-export const POSTS_SLUGS_QUERY =
-  defineQuery(`*[_type == "post" && defined(slug.current)]{ 
+export const EVENTS_SLUGS_QUERY =
+  defineQuery(`*[_type == "event" && defined(slug.current)]{ 
   "slug": slug.current
 }`);
 
-export const POST_QUERY =
-  defineQuery(`*[_type == "post" && slug.current == $slug][0]{
+export const EVENT_QUERY =
+  defineQuery(`*[_type == "event" && slug.current == $slug][0]{
   _id,
   title,
-  body,
+  slug,
   mainImage,
-  publishedAt,
+  eventDate,
+  body,
   "categories": coalesce(
     categories[]->{
       _id,
@@ -41,9 +38,5 @@ export const POST_QUERY =
       title
     },
     []
-  ),
-  author->{
-    name,
-    image
-  }
+  )
 }`);
