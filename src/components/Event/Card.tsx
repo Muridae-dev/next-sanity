@@ -63,7 +63,7 @@ export default function EventCard({
         {event.title}
       </h3>
       {event.shortDescription ? (
-        <div className="lg:col-span-7 px-[8px] lg:col-start-6 prose text-black pb-[12px]">
+        <div className="lg:col-span-7 px-[8px] lg:col-start-6 prose text-inherit pb-[12px]">
           <PortableText
             value={event.shortDescription}
             components={components}
