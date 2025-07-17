@@ -1,4 +1,5 @@
 import AnimatedBackground from "@/components/AnimatedBackground";
+import ClientSceneWrapper from "./ClientSceneWrapper";
 
 export default function HomepageHero() {
   return (
@@ -11,8 +12,7 @@ export default function HomepageHero() {
         ❤️
         <span>Norway</span>
       </div>
-
-      <AnimatedBackground />
+      {/* <AnimatedBackground /> */}
     </section>
   );
 }

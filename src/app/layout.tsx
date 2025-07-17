@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ClientSceneWrapper from "@/components/ClientSceneWrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",

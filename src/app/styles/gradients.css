@@ -1,4 +1,4 @@
-.gradient-background {
+/* .gradient-background {
   background:
     url("/backgrounds/grain.svg"),
     linear-gradient(
@@ -28,7 +28,7 @@
     200px 200px,
     cover;
   background-blend-mode: overlay;
-}
+} */
 
 /* linear-gradient(to right, #12c2e9, #c471ed, #f64f59); */
 /* linear-gradient(to right, #fc5c7d, #6a82fb); */
