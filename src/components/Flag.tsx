@@ -78,8 +78,7 @@ const fragmentShader = /* glsl */ `
 `;
 
 function FullscreenShader() {
-  // TODO: See if we can find what this is...
-  const materialRef = useRef<any>(null);
+  const materialRef = useRef<HTMLElement>(null);
 
   const uniforms = useRef({
     u_time: { value: 0 },

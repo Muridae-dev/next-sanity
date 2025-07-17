@@ -126,7 +126,7 @@ const fragmentShader = /* glsl */ `
 `;
 
 function FullscreenShader() {
-  const materialRef = useRef<any>(null);
+  const materialRef = useRef<HTMLElement>(null);
   const { size } = useThree();
 
   const gradient = useGradientTexture();
