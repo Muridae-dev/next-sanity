@@ -12,7 +12,7 @@ export default function EventSection({
       <h2 className="font-faodu text-center text-8xl">
         <AnimatedText text="EVENTS" />
       </h2>
-      <div className="grid grid-cols-3 gap-[12px] px-[12px] gap-y-[32px] pb-[32px]">
+      <div className="grid grid-cols-3 gap-[24px] px-[12px] gap-y-[32px] pb-[32px]">
         {events.map((event) => {
           return <EventCard key={event._id} event={event} />;
         })}

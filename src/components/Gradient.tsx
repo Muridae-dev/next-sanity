@@ -1,7 +1,6 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { ShaderMaterial } from "three";
 import { useRef, useEffect } from "react";
 import { noise2D, noise3D } from "@/lib/shaders/noise";
 import { useGradientTexture } from "@/lib/shaders/gradientTextures";
@@ -127,7 +126,7 @@ const fragmentShader = /* glsl */ `
 `;
 
 function FullscreenShader() {
-  const materialRef = useRef<ShaderMaterial>(null);
+  const materialRef = useRef<any>(null);
   const { size } = useThree();
 
   const gradient = useGradientTexture();
@@ -166,7 +165,14 @@ export default function Scene() {
     <Canvas
       orthographic
       camera={{ position: [0, 0, 1], zoom: 1 }}
-      style={{ width: "100vw", height: "100%", position: "absolute" }}
+      dpr={0.5}
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+        overflow: "hidden",
+        zIndex: "0",
+      }}
     >
       <FullscreenShader />
     </Canvas>

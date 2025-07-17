@@ -51,7 +51,7 @@ export default function EventCard({
       className="flex flex-col opacity-0"
     >
       <img
-        className="w-full border"
+        className="w-full rounded"
         src={
           event.mainImage
             ? urlFor(event.mainImage).width(400).height(200).url()
@@ -72,7 +72,7 @@ export default function EventCard({
       ) : null}
 
       <div className="px-[8px] text-2xl font-faodu mt-auto flex gap-[12px]">
-        <span className="bg-white invert px-[10px] rounded-tr rounded-bl">
+        <span className="border bg-[rgba(0,0,255,0.2)] px-[10px] rounded-tr rounded-bl">
           →
         </span>{" "}
         More info

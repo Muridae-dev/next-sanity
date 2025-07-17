@@ -1,4 +1,3 @@
-import AnimatedBackground from "@/components/AnimatedBackground";
 import ClientSceneWrapper from "./ClientSceneWrapper";
 
 export default function HomepageHero() {
@@ -12,7 +11,7 @@ export default function HomepageHero() {
         ❤️
         <span>Norway</span>
       </div>
-      {/* <AnimatedBackground /> */}
+      <ClientSceneWrapper scene="flag" />
     </section>
   );
 }
