@@ -2,8 +2,9 @@
 
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
+import { ComponentType } from "react";
 
-const sceneMap: Record<string, any> = {
+const sceneMap: Record<string, ComponentType<{}>> = {
   gradients: dynamic(() => import("@/components/Gradient"), {
     ssr: false,
   }),
