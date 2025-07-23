@@ -8,15 +8,11 @@ export default async function Page() {
   const { data: events } = await sanityFetch({ query: EVENTS_QUERY });
 
   return (
-    <>
+    <div className="relative">
       <HomepageHero />
       <SupportSection />
 
       <EventSection events={events} />
-
-      <section></section>
-
-      <div className="h-screen w-full gradient-background"></div>
-    </>
+    </div>
   );
 }

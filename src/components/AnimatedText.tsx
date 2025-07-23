@@ -40,7 +40,7 @@ export default function AnimatedText({ text }: AnimatedTextProps) {
       animation.scrollTrigger?.kill();
       animation.kill();
     };
-  }, [elRef.current]);
+  }, []);
 
   return (
     <div ref={elRef} className="animated-text overflow-hidden inline-block">

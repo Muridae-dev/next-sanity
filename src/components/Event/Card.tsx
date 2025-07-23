@@ -1,6 +1,5 @@
 "use client";
 
-import { urlFor } from "@/sanity/lib/image";
 import { components } from "@/sanity/PortableTextComponents";
 import { EVENTS_QUERYResult } from "@/sanity/types";
 import { PortableText } from "next-sanity";
@@ -8,6 +7,8 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,22 +49,29 @@ export default function EventCard({
     <Link
       ref={elRef}
       href={`events/${event.slug?.current}`}
-      className="flex flex-col opacity-0"
+      className="group flex flex-col opacity-0"
     >
-      <img
-        className="w-full border"
-        src={
-          event.mainImage
-            ? urlFor(event.mainImage).width(400).height(200).url()
-            : ""
-        }
-      />
+      <figure className="h-[200px] w-full overflow-hidden flex items-center rounded">
+        {event.mainImage && (
+          <Image
+            src={urlFor(event.mainImage)
+              .width(800)
+              .height(400)
+              .quality(100)
+              .auto("format")
+              .url()}
+            alt={event.mainImage?.alt || "Event image"}
+            width={800}
+            height={400}
+          />
+        )}
+      </figure>
 
-      <h3 className="px-[8px] font-faodu text-4xl pt-[4px] pb-[12px]">
+      <h3 className="px-[8px] font-faodu text-4xl pt-[4px] pb-[12px] group-hover:underline">
         {event.title}
       </h3>
       {event.shortDescription ? (
-        <div className="lg:col-span-7 px-[8px] lg:col-start-6 prose text-black pb-[12px]">
+        <div className="lg:col-span-7 px-[8px] lg:col-start-6 prose text-inherit pb-[12px]">
           <PortableText
             value={event.shortDescription}
             components={components}
@@ -71,11 +79,11 @@ export default function EventCard({
         </div>
       ) : null}
 
-      <div className="px-[8px] text-2xl font-faodu mt-auto flex gap-[12px]">
-        <span className="bg-white invert px-[10px] rounded-tr rounded-bl">
+      <div className="px-[8px] text-2xl font-faodu mt-auto flex gap-[12px] ">
+        <span className="border bg-[rgba(0,0,255,0.2)] px-[10px] rounded-tr rounded-bl">
           →
-        </span>{" "}
-        More info
+        </span>
+        <span className="group-hover:underline">More info</span>
       </div>
     </Link>
   );

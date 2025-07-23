@@ -1,5 +1,26 @@
 @import "tailwindcss";
-@import "./styles/animations.css";
 @import "./styles/fonts.css";
-@import "./styles/gradients.css";
 @plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-blue: rgb(0, 42, 255);
+  --color-menu-button: rgba(110, 0, 255, 0.2);
+  --color-menu-button-hover: rgba(110, 0, 255, 0.3);
+}
+
+.menu-button {
+  @apply bg-menu-button hover:bg-menu-button-hover hover:underline backdrop-blur-xl;
+}
+
+.grain-filter {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: url("/backgrounds/grain.svg");
+  background-repeat: repeat;
+  background-size:
+    400px 400px,
+    cover;
+  mix-blend-mode: luminosity;
+  opacity: 0.5;
+}
