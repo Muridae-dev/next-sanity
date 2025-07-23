@@ -4,6 +4,12 @@
 
 @theme inline {
   --color-blue: rgb(0, 42, 255);
+  --color-menu-button: rgba(110, 0, 255, 0.2);
+  --color-menu-button-hover: rgba(110, 0, 255, 0.3);
+}
+
+.menu-button {
+  @apply bg-menu-button hover:bg-menu-button-hover hover:underline backdrop-blur-xl;
 }
 
 .grain-filter {
