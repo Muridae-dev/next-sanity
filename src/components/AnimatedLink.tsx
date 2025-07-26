@@ -3,7 +3,7 @@
 import Link, { LinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef } from "react";
 
 interface AnimatedLinkProps extends LinkProps {
   children: React.ReactNode;

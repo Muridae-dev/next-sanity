@@ -3,7 +3,6 @@
 import { components } from "@/sanity/PortableTextComponents";
 import { EVENTS_QUERYResult } from "@/sanity/types";
 import { PortableText } from "next-sanity";
-import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
