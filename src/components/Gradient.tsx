@@ -172,6 +172,7 @@ export default function Scene() {
         position: "absolute",
         overflow: "hidden",
         zIndex: "0",
+        pointerEvents: "none",
       }}
     >
       <FullscreenShader />

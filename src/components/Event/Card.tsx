@@ -3,12 +3,12 @@
 import { components } from "@/sanity/PortableTextComponents";
 import { EVENTS_QUERYResult } from "@/sanity/types";
 import { PortableText } from "next-sanity";
-import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import AnimatedLink from "../AnimatedLink";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,7 +46,7 @@ export default function EventCard({
   }, []);
 
   return (
-    <Link
+    <AnimatedLink
       ref={elRef}
       href={`events/${event.slug?.current}`}
       className="group flex flex-col opacity-0"
@@ -85,6 +85,6 @@ export default function EventCard({
         </span>
         <span className="group-hover:underline">More info</span>
       </div>
-    </Link>
+    </AnimatedLink>
   );
 }

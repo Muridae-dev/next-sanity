@@ -1,4 +1,6 @@
+import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import { SanityLive } from "@/sanity/lib/live";
 
 export default function FrontendLayout({
@@ -7,10 +9,11 @@ export default function FrontendLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className="bg-white min-h-screen">
+    <section className="min-h-screen">
       <Header />
-      {children}
+      <SmoothScrollProvider>{children}</SmoothScrollProvider>
       <SanityLive />
+      <Footer />
     </section>
   );
 }

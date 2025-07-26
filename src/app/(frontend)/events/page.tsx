@@ -1,3 +1,3 @@
-export default async function EventsMainPage() {
+export default async function Page() {
   return <div className="relative"></div>;
 }
