@@ -48,5 +48,5 @@ export default function SmoothScrollProvider({
     };
   }, []);
 
-  return <div id="frontend-layout">{children}</div>;
+  return <div>{children}</div>;
 }
