@@ -6,7 +6,6 @@
   --color-blue: rgb(0, 42, 255);
   --color-menu-button: rgba(110, 0, 255, 0.2);
   --color-menu-button-hover: rgba(110, 0, 255, 0.3);
-  --text-shadow-xl: 1px 1px 1px black;
 }
 
 .menu-button {
