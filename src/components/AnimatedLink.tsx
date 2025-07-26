@@ -1,7 +1,7 @@
 "use client";
 
 import Link, { LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
 import React, { forwardRef, useRef } from "react";
 
@@ -13,22 +13,28 @@ interface AnimatedLinkProps extends LinkProps {
 const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
   ({ href, children, className, ...props }, ref) => {
     const router = useRouter();
+    const currentPath = usePathname();
+    const targetPath = href.toString();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
 
       const transitionElement = document.querySelector("#transition-element");
-      if (transitionElement) {
+      if (transitionElement && currentPath !== targetPath) {
         gsap.to(transitionElement, {
           x: 0,
           duration: 0.5,
           ease: "power2.inOut",
           onComplete: () => {
-            router.push(href.toString());
+            router.push(targetPath);
           },
         });
       } else {
-        router.push(href.toString());
+        if (currentPath === targetPath) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          router.push(targetPath);
+        }
       }
     };
 
