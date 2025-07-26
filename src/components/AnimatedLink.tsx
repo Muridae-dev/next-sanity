@@ -13,7 +13,6 @@ interface AnimatedLinkProps extends LinkProps {
 const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
   ({ href, children, className, ...props }, ref) => {
     const router = useRouter();
-    const pageContainerRef = useRef<HTMLElement | null>(null);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
