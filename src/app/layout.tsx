@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientSceneWrapper from "@/components/ClientSceneWrapper";
+import TransitionElement from "@/components/TransitionElement";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,9 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="relative text-blue">
-        <ClientSceneWrapper scene="gradients" />
-
+      <body className="relative text-blue bg-black overflow-hidden">
+        <TransitionElement />
+        <ClientSceneWrapper scene="gradients" key="scene" />
         {children}
       </body>
     </html>

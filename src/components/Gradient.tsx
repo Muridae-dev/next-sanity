@@ -4,6 +4,8 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
 import { noise2D, noise3D } from "@/lib/shaders/noise";
 import { useGradientTexture } from "@/lib/shaders/gradientTextures";
+import { useLoadingManager } from "@/lib/shaders/loadingManager";
+import gsap from "gsap";
 
 const vertexShader = /* glsl */ `
   varying vec2 vUv;
@@ -172,6 +174,7 @@ export default function Scene() {
         position: "absolute",
         overflow: "hidden",
         zIndex: "0",
+        pointerEvents: "none",
       }}
     >
       <FullscreenShader />
