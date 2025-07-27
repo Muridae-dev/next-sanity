@@ -12,6 +12,14 @@
   @apply bg-menu-button hover:bg-menu-button-hover hover:underline backdrop-blur-xl;
 }
 
+.text-heading {
+  @apply text-4xl md:text-8xl font-faodu;
+}
+
+.text-card-heading {
+  @apply text-2xl md:text-5xl font-faodu;
+}
+
 .grain-filter {
   position: absolute;
   height: 100%;

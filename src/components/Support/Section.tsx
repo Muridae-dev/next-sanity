@@ -22,12 +22,12 @@ export default function SupportSection() {
   ];
   return (
     <>
-      <div className="h-content w-full border-t border-b flex justify-center items-center gradient-background">
-        <h2 className="text-8xl w-fit h-fit font-faodu">
+      <div className="h-content w-full border-t border-b flex justify-center items-center">
+        <h2 className="text-heading w-fit h-fit">
           <AnimatedText text="SUPPORTING PRIDE" />
         </h2>
       </div>
-      <div className="grid grid-cols-3 border-b gradient-background">
+      <div className="md:grid md:grid-cols-3 border-b">
         {data.map((d) => (
           <SupportCard
             key={d.title}

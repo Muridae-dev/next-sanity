@@ -67,7 +67,7 @@ export default function EventCard({
         )}
       </figure>
 
-      <h3 className="px-[8px] font-faodu text-4xl pt-[4px] pb-[12px] group-hover:underline">
+      <h3 className="px-[8px] text-card-heading pt-[4px] pb-[12px] group-hover:underline">
         {event.title}
       </h3>
       {event.shortDescription ? (

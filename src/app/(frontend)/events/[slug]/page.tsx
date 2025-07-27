@@ -24,7 +24,7 @@ export default async function Page({
   return (
     <main className="relative pt-[50vh] ">
       <div className="translate-y-[-50%] flex flex-col items-center justify-center">
-        <h1 className="text-8xl w-fit h-fit pl-[12px] pr-[24px] font-faodu pb-[24px] text-center">
+        <h1 className="text-heading w-fit h-fit pl-[12px] pr-[24px] pb-[24px] text-center">
           {event.title}
         </h1>
         <div className="pt-[24px]">
