@@ -44,7 +44,7 @@ export default function SupportCard({
   return (
     <div className="p-[12px] border-r last:border-r-0">
       <div ref={elRef}>
-        <h3 className="text-5xl pb-[12px] font-faodu">{title}</h3>
+        <h3 className="text-card-heading pb-[12px]">{title}</h3>
         {description}
       </div>
     </div>

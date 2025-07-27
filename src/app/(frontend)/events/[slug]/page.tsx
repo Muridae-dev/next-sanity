@@ -22,9 +22,9 @@ export default async function Page({
   }
 
   return (
-    <main className="relative pt-[50vh] ">
+    <main className="relative pt-[50vh] pb-[32px]">
       <div className="translate-y-[-50%] flex flex-col items-center justify-center">
-        <h1 className="text-8xl w-fit h-fit pl-[12px] pr-[24px] font-faodu pb-[24px] text-center">
+        <h1 className="text-heading w-fit h-fit pl-[12px] pr-[24px] pb-[24px] text-center">
           {event.title}
         </h1>
         <div className="pt-[24px]">
@@ -42,8 +42,8 @@ export default async function Page({
         </div>
       </div>
 
-      <div className="h-[600px] overflow-hidden relative flex justify-center">
-        <figure className="rounded overflow-hidden w-fit h-[600px] flex items-center opacity-95">
+      <div className="h-[600px] max-h-fit overflow-hidden relative flex justify-center">
+        <figure className="rounded overflow-hidden w-fit max-w-[90dvw] max-h-fit h-[600px] flex items-center opacity-95">
           {event.mainImage && (
             <Image
               src={urlFor(event.mainImage)
