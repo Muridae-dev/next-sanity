@@ -122,6 +122,7 @@ export default function Scene() {
         left: "50%",
         transform: "translate(-50%, -50%)",
         width: "60vw",
+        minWidth: "800px",
         height: "60vh",
         filter: "blur(50px)",
       }}
