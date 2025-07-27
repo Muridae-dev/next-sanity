@@ -37,7 +37,7 @@ export default function MarqueeText({ text, speed = 150 }: MarqueeTextProps) {
 
   return (
     <div
-      className={`whitespace-nowrap font-faodu text-[10rem] overflow-hidden h-[12rem] flex items-center`}
+      className={`whitespace-nowrap font-faodu text-8xl md:text-[10rem] overflow-hidden h-[8rem] md:h-[10rem] flex items-center`}
       ref={containerRef}
     >
       <div ref={innerRef}>

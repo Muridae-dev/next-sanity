@@ -31,4 +31,5 @@
     cover;
   mix-blend-mode: luminosity;
   opacity: 0.5;
+  pointer-events: none;
 }

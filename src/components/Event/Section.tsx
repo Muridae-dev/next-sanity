@@ -8,7 +8,7 @@ export default function EventSection({
   events: EVENTS_QUERYResult;
 }) {
   return (
-    <section>
+    <section className="pb-[12px]">
       <h2 className="text-center text-heading pt-[8px]">
         <AnimatedText text="EVENTS" />
       </h2>
