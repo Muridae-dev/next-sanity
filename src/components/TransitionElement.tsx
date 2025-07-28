@@ -11,15 +11,23 @@ export default function TransitionElement() {
 
   useEffect(() => {
     const transitionElement = document.querySelector("#transition-element");
+
     if (transitionElement && loaded) {
-      gsap.to(transitionElement, {
-        x: "-100%",
-        duration: 0.5,
-        ease: "power2.inOut",
-        onComplete: () => {
-          gsap.set(transitionElement, { x: "100%" });
-        },
-      });
+      const style = window.getComputedStyle(transitionElement);
+      const matrix = new WebKitCSSMatrix(style.transform);
+
+      const currentX = matrix.m41;
+
+      if (currentX === 0) {
+        gsap.to(transitionElement, {
+          x: "-100%",
+          duration: 0.5,
+          ease: "power2.inOut",
+          onComplete: () => {
+            gsap.set(transitionElement, { x: "100%" });
+          },
+        });
+      }
     }
   }, [pathName, loaded]);
   return (
