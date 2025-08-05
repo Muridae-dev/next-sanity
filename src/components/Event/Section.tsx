@@ -8,7 +8,7 @@ export default function EventSection({
   events: EVENTS_QUERYResult;
 }) {
   return (
-    <section className="pb-[12px]">
+    <section>
       <h2 className="text-center text-heading pt-[8px]">
         <AnimatedText text="EVENTS" />
       </h2>
@@ -17,9 +17,9 @@ export default function EventSection({
           return <EventCard key={event._id} event={event} />;
         })}
       </div>
-      <h2 className="text-center text-heading border-y">
+      {/* <h2 className="text-center text-heading border-y">
         <AnimatedText text="AND MORE HERE!" />
-      </h2>
+      </h2> */}
     </section>
   );
 }

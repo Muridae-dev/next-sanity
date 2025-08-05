@@ -40,3 +40,10 @@ export const EVENT_QUERY =
     []
   )
 }`);
+
+export const PHOTO_QUERY = defineQuery(`*[_type == "photo"][0...6]{
+  _id,
+  title,
+  image,
+  credits
+}`);

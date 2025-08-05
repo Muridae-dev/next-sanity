@@ -15,7 +15,7 @@ export function Header() {
             className="menu-button h-full flex items-center border-r px-[20px] py-[20px] md:px-[32px] md:py-[32px]"
             href="/events"
           >
-            Program
+            Events
           </AnimatedLink>
         </li>
         <li>
@@ -23,7 +23,7 @@ export function Header() {
             className="menu-button h-full flex items-center px-[20px] py-[20px] md:px-[32px] md:py-[32px]"
             href="/studio"
           >
-            Shop
+            Media
           </AnimatedLink>
         </li>
       </ul>
