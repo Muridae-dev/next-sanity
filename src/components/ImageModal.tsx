@@ -3,6 +3,7 @@
 import { urlFor } from "@/sanity/lib/image";
 import { PHOTO_QUERYResult } from "@/sanity/types";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function ImageModal({
   photo,
@@ -21,6 +22,16 @@ export default function ImageModal({
 }) {
   const width = 800;
   const height = 1200;
+
+  useEffect(() => {
+    const handleKeys = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight" && isNextImage) nextImage();
+      if (e.key === "ArrowLeft" && isPreviousImage) previousImage();
+    };
+    window.addEventListener("keydown", handleKeys);
+    return () => window.removeEventListener("keydown", handleKeys);
+  }, [closeModal]);
 
   if (!photo) return null;
   return (
