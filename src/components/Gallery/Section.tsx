@@ -4,7 +4,7 @@ import GalleryCard from "./Card";
 import AnimatedText from "../AnimatedText";
 import { PHOTO_QUERYResult } from "@/sanity/types";
 import ImageModal from "../ImageModal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function GallerySection({
   photos,
