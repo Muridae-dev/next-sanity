@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="relative text-blue bg-black overflow-hidden w-full">
+      <body className="relative text-blue bg-blue md:overflow-hidden w-full">
         <TransitionElement />
         <ClientSceneWrapper scene="gradients" key="scene" />
         {children}

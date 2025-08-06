@@ -125,6 +125,18 @@ const fragmentShader = /* glsl */ `
   }
 `;
 
+function getRecommendedDpr() {
+  const cores = navigator.hardwareConcurrency || 4;
+
+  // Fallback for small screens
+  const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
+
+  if (cores <= 2 || isSmallScreen) return 0.2;
+  if (cores <= 4) return 0.35;
+
+  return 0.5;
+}
+
 function FullscreenShader() {
   const materialRef = useRef<HTMLElement>(null);
   const { size } = useThree();
@@ -165,7 +177,7 @@ export default function Scene() {
     <Canvas
       orthographic
       camera={{ position: [0, 0, 1], zoom: 1 }}
-      dpr={0.5}
+      dpr={getRecommendedDpr()}
       style={{
         width: "100%",
         height: "100%",

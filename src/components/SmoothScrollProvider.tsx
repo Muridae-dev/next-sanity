@@ -13,6 +13,12 @@ export default function SmoothScrollProvider({
   children: React.ReactNode;
 }) {
   useEffect(() => {
+    const isMdUp = window.matchMedia("(min-width: 768px)").matches;
+
+    if (!isMdUp) {
+      return;
+    }
+
     const lenis = new Lenis({
       lerp: 0.1,
       smoothWheel: true,
