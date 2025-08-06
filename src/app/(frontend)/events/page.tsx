@@ -17,7 +17,7 @@ export default async function Page() {
   );
 
   return (
-    <div className="relative">
+    <div className="relative pt-[48px] md:pt-[12px]">
       {Object.keys(eventsByYear)
         .sort((a, b) => b.localeCompare(a))
         .map((year) => (

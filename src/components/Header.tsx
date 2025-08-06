@@ -12,7 +12,7 @@ export function Header() {
       <ul className="flex items-center border-b border-l">
         <li>
           <AnimatedLink
-            className="menu-button h-full flex items-center border-r px-[20px] py-[20px] md:px-[32px] md:py-[32px]"
+            className="menu-button h-full flex items-center border-r px-[20px] py-[12px] md:px-[32px] md:py-[32px]"
             href="/events"
           >
             Events
@@ -20,8 +20,8 @@ export function Header() {
         </li>
         <li>
           <AnimatedLink
-            className="menu-button h-full flex items-center px-[20px] py-[20px] md:px-[32px] md:py-[32px]"
-            href="/studio"
+            className="menu-button h-full flex items-center px-[20px] py-[12px] md:px-[32px] md:py-[32px]"
+            href="/media"
           >
             Media
           </AnimatedLink>
