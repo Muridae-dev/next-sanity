@@ -57,5 +57,22 @@ export const PHOTO_QUERY = defineQuery(`*[_type == "photo"][0...6]{
   _id,
   title,
   image,
-  credits
+  year->{
+    year
+  },
+  photographer->{
+    name
+  }
+}`);
+
+export const PHOTO_QUERY_ALL = defineQuery(`*[_type == "photo"]{
+  _id,
+  title,
+  image,
+  year->{
+    year
+  },
+  photographer->{
+    name
+  }
 }`);

@@ -28,10 +28,21 @@ export const photoType = defineType({
       ],
     },
     {
-      name: "credits",
-      type: "string",
+      name: "year",
+      title: "Year",
+      type: "reference",
+      to: [{ type: "yearOption" }],
+      options: {
+        disableNew: false,
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "photographer",
       title: "Photographer / Credits",
       description: "Name of the person who took the photo",
+      type: "reference",
+      to: [{ type: "photographerOption" }],
     },
   ],
 });

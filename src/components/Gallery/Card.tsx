@@ -46,6 +46,7 @@ export default function GalleryCard({
     <div ref={elRef}>
       {photo.image && (
         <Image
+          className="md:w-[300px]"
           src={urlFor(photo.image)
             .width(width)
             .height(height)

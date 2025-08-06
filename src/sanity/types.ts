@@ -33,7 +33,36 @@ export type Photo = {
     alt?: string;
     _type: "image";
   };
-  credits?: string;
+  year?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "yearOption";
+  };
+  photographer?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "photographerOption";
+  };
+};
+
+export type PhotographerOption = {
+  _id: string;
+  _type: "photographerOption";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+};
+
+export type YearOption = {
+  _id: string;
+  _type: "yearOption";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  year?: number;
 };
 
 export type Event = {
@@ -283,7 +312,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Photo | Event | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Photo | PhotographerOption | YearOption | Event | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: EVENTS_QUERY
@@ -451,7 +480,7 @@ export type EVENT_QUERYResult = {
   categories: Array<never>;
 } | null;
 // Variable: PHOTO_QUERY
-// Query: *[_type == "photo"][0...6]{  _id,  title,  image,  credits}
+// Query: *[_type == "photo"][0...6]{  _id,  title,  image,  year->{    year  },  photographer->{    name  }}
 export type PHOTO_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -468,7 +497,37 @@ export type PHOTO_QUERYResult = Array<{
     alt?: string;
     _type: "image";
   } | null;
-  credits: string | null;
+  year: {
+    year: number | null;
+  } | null;
+  photographer: {
+    name: string | null;
+  } | null;
+}>;
+// Variable: PHOTO_QUERY_ALL
+// Query: *[_type == "photo"]{  _id,  title,  image,  year->{    year  },  photographer->{    name  }}
+export type PHOTO_QUERY_ALLResult = Array<{
+  _id: string;
+  title: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  year: {
+    year: number | null;
+  } | null;
+  photographer: {
+    name: string | null;
+  } | null;
 }>;
 
 // Query TypeMap
@@ -479,6 +538,7 @@ declare module "@sanity/client" {
     "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc){\n  _id,\n  title,\n  slug,\n  mainImage,\n  eventDate,\n  shortDescription,\n  \"year\": array::join(string::split(eventDate, \"\")[0...4], \"\")\n\n}": EVENTS_QUERY_ALLResult;
     "*[_type == \"event\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": EVENTS_SLUGS_QUERYResult;
     "*[_type == \"event\" && slug.current == $slug][0]{\n  _id,\n  title,\n  slug,\n  mainImage,\n  eventDate,\n  body,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  )\n}": EVENT_QUERYResult;
-    "*[_type == \"photo\"][0...6]{\n  _id,\n  title,\n  image,\n  credits\n}": PHOTO_QUERYResult;
+    "*[_type == \"photo\"][0...6]{\n  _id,\n  title,\n  image,\n  year->{\n    year\n  },\n  photographer->{\n    name\n  }\n}": PHOTO_QUERYResult;
+    "*[_type == \"photo\"]{\n  _id,\n  title,\n  image,\n  year->{\n    year\n  },\n  photographer->{\n    name\n  }\n}": PHOTO_QUERY_ALLResult;
   }
 }
