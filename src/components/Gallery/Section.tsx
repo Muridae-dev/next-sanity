@@ -5,6 +5,7 @@ import AnimatedText from "../AnimatedText";
 import { PHOTO_QUERYResult } from "@/sanity/types";
 import ImageModal from "../ImageModal";
 import { useState } from "react";
+import AnimatedLink from "../AnimatedLink";
 
 export default function GallerySection({
   photos,
@@ -20,15 +21,25 @@ export default function GallerySection({
         <AnimatedText text="PHOTO GALLERY" />
       </h2>
 
-      <div className="flex flex-col md:flex-row gap-[12px] pt-[24px] px-[12px]">
+      <div className="flex flex-col md:flex-row gap-[12px] pt-[24px] px-[12px] justify-center">
         {photos.map((photo, index) => (
           <button onClick={() => setCurrentIndex(index)} key={photo._id}>
             <GalleryCard photo={photo} />
           </button>
         ))}
       </div>
-      <div className="text-card-heading text-center pt-[12px]">
-        Find more of our images on Instagram @henningsvær.pride
+      <div className="font-faodu text-4xl text-center pt-[12px]">
+        Find more images in our{" "}
+        <AnimatedLink href="/media" className="underline">
+          media section
+        </AnimatedLink>{" "}
+        or on Instagram{" "}
+        <a
+          className="underline"
+          href="https://www.instagram.com/henningsvaer.pride/"
+        >
+          @henningsvær.pride
+        </a>
       </div>
       <ImageModal
         photo={selectedImage}

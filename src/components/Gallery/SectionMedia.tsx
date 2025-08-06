@@ -28,13 +28,14 @@ export default function SectionMedia({
         {Object.entries(photos)
           .sort((a, b) => b[0].localeCompare(a[0]))
           .map((yearPhotos) => (
-            <section>
+            <section key={yearPhotos[0]}>
               <h2 className="text-card-heading pb-[12px]">
                 <AnimatedText text={yearPhotos[0]} />
               </h2>
               <div className="flex flex-col md:flex-row gap-[12px]">
                 {yearPhotos[1].map((photo, index) => (
                   <button
+                    key={photo._id}
                     onClick={() => {
                       setCurrentYear(Number(yearPhotos[0]));
                       setCurrentIndex(index);
@@ -46,9 +47,6 @@ export default function SectionMedia({
               </div>
             </section>
           ))}
-      </div>
-      <div className="text-card-heading text-center pt-[12px]">
-        Find more of our images on Instagram @henningsvær.pride
       </div>
       <ImageModal
         photo={selectedImage}
