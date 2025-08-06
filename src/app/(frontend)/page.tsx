@@ -14,7 +14,7 @@ export default async function Page() {
       <HomepageHero />
       <SupportSection />
 
-      <EventSection events={events} />
+      <EventSection title={"EVENTS"} events={events} />
       <GallerySection photos={photos} />
     </div>
   );

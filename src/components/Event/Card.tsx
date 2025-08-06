@@ -1,7 +1,7 @@
 "use client";
 
 import { components } from "@/sanity/PortableTextComponents";
-import { EVENTS_QUERYResult } from "@/sanity/types";
+import { EVENTS_QUERY_ALLResult, EVENTS_QUERYResult } from "@/sanity/types";
 import { PortableText } from "next-sanity";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function EventCard({
   event,
 }: {
-  event: EVENTS_QUERYResult[number];
+  event: EVENTS_QUERYResult[number] | EVENTS_QUERY_ALLResult[number];
 }) {
   const elRef = useRef<HTMLAnchorElement>(null);
 

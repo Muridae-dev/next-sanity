@@ -6,6 +6,14 @@
 }
 
 @font-face {
+  font-family: "WhiteChapel";
+  src: url("/fonts/WhiteChapel/WhiteCapel.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: EyesForSerifs;
   src: url("/fonts/EyesForSerifs/EyesforSerifs-Regular.woff") format("woff");
   font-weight: 400;
@@ -13,7 +21,7 @@
 }
 
 @theme inline {
-  --font-faodu: "Faodu";
+  --font-faodu: "Faodu", "WhiteChapel";
 }
 
 body {

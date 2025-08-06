@@ -18,6 +18,18 @@ export const EVENTS_QUERY =
   )
 }`);
 
+export const EVENTS_QUERY_ALL =
+  defineQuery(`*[_type == "event" && defined(slug.current)]|order(eventDate desc){
+  _id,
+  title,
+  slug,
+  mainImage,
+  eventDate,
+  shortDescription,
+  "year": array::join(string::split(eventDate, "")[0...4], "")
+
+}`);
+
 export const EVENTS_SLUGS_QUERY =
   defineQuery(`*[_type == "event" && defined(slug.current)]{ 
   "slug": slug.current
