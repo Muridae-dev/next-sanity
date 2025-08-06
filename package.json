@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typegen": "npx sanity@latest schema extract --path=./src/sanity/extract.json && npx sanity@latest typegen generate"
+    "typegen": "npx sanity@latest schema extract --path=./src/sanity/extract.json && npx sanity@latest typegen generate",
+    "predev": "npm run typegen",
+    "prebuild": "npm run typegen"
   },
   "dependencies": {
     "@react-three/fiber": "^9.2.0",
