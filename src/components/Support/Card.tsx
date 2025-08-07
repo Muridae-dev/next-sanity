@@ -42,7 +42,7 @@ export default function SupportCard({
   }, []);
 
   return (
-    <div className="p-[12px] border-r last:border-r-0">
+    <div className="p-[12px] border-r last:border-r-0 md:pt-[12px] md:pb-[32px]">
       <div ref={elRef}>
         <h3 className="text-card-heading pb-[12px]">{title}</h3>
         {description}

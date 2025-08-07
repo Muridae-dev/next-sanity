@@ -23,7 +23,7 @@ function createGradientTexture(
   return canvas;
 }
 
-const gradientColors = ["#f95da0ff", "#ff6eeeff", "#3F5EFB"];
+const gradientColors = ["#ED3B82", "#DF74F2", "#ED3B82"];
 
 export function useGradientTexture(colors = gradientColors) {
   const canvas = useMemo(() => createGradientTexture(colors), [colors]);

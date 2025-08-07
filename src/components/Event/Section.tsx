@@ -10,11 +10,11 @@ export default function EventSection({
   events: EVENTS_QUERYResult | EVENTS_QUERY_ALLResult;
 }) {
   return (
-    <section>
-      <h2 className="text-center text-heading pt-[8px]">
+    <section className="pb-[48px] px-[12px]">
+      <h2 className="text-center text-heading py-[8px]">
         <AnimatedText text={title} />
       </h2>
-      <div className="flex flex-col px-[12px] pb-[32px] gap-[24px] md:grid md:grid-cols-3 md:gap-[24px] md:gap-y-[32px]">
+      <div className="flex flex-col pb-[32px] gap-y-[48px] md:gap-[24px] md:gap-y-[64px] md:grid md:grid-cols-3">
         {events.map((event) => {
           return <EventCard key={event._id} event={event} />;
         })}

@@ -27,7 +27,7 @@ export default function SupportSection() {
           <AnimatedText text="SUPPORTING PRIDE" />
         </h2>
       </div>
-      <div className="md:grid md:grid-cols-3 border-b">
+      <div className="py-[12px] border-b md:py-0 md:grid md:grid-cols-3">
         {data.map((d) => (
           <SupportCard
             key={d.title}
