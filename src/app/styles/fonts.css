@@ -20,8 +20,18 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: Chicle;
+  src:
+    url("/fonts/Chicle/Chicle.woff2") format("woff2"),
+    url("/fonts/Chicle/Chicle.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
 @theme inline {
   --font-faodu: "Faodu", "WhiteChapel";
+  --font-chicle: "Chicle";
 }
 
 body {

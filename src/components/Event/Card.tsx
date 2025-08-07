@@ -67,7 +67,7 @@ export default function EventCard({
         )}
       </figure>
 
-      <h3 className="px-[8px] text-card-heading pt-[4px] pb-[12px] group-hover:underline">
+      <h3 className="px-[8px] text-card-heading pt-[8px] pb-[12px] group-hover:underline">
         {event.title}
       </h3>
       {event.shortDescription ? (
@@ -79,7 +79,7 @@ export default function EventCard({
         </div>
       ) : null}
 
-      <div className="px-[8px] text-2xl font-faodu mt-auto flex gap-[12px] ">
+      <div className="pt-[12px] px-[8px] text-2xl font-chicle mt-auto flex gap-[12px] md:pt-0">
         <span className="border bg-[rgba(0,0,255,0.2)] px-[10px] rounded-tr rounded-bl">
           →
         </span>

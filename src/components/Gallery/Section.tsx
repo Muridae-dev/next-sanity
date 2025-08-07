@@ -16,7 +16,7 @@ export default function GallerySection({
   const selectedImage = currentIndex !== null ? photos[currentIndex] : null;
 
   return (
-    <section className="w-full pb-[24px]">
+    <section className="w-full">
       <h2 className="text-center text-heading border-y">
         <AnimatedText text="PHOTO GALLERY" />
       </h2>
@@ -28,7 +28,7 @@ export default function GallerySection({
           </button>
         ))}
       </div>
-      <div className="font-faodu text-4xl text-center pt-[12px]">
+      <div className="font-chicle text-center py-[12px] text-2xl md:text-4xl md:py-[24px]">
         Find more images in our{" "}
         <AnimatedLink href="/media" className="underline">
           media section
