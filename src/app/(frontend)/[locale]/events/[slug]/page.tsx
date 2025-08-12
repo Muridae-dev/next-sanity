@@ -10,11 +10,12 @@ import { notFound } from "next/navigation";
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }) {
+  const { slug, locale } = await params;
   const { data: event } = await sanityFetch({
     query: EVENT_QUERY,
-    params: await params,
+    params: { slug, locale },
   });
 
   if (!event) {

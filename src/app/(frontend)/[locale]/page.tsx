@@ -4,25 +4,38 @@ import HomepageHero from "@/components/HomepageHero";
 import SupportSection from "@/components/Support/Section";
 import { sanityFetch } from "@/sanity/lib/live";
 import { EVENTS_QUERY, PHOTO_QUERY } from "@/sanity/lib/queries";
+import { getDictionary } from "./dictionaries";
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: "no" | "en" }>;
 }) {
   const { locale } = await params;
-  console.log(locale);
 
-  const { data: events } = await sanityFetch({ query: EVENTS_QUERY });
+  const { data: events } = await sanityFetch({
+    query: EVENTS_QUERY,
+    params: { locale },
+  });
   const { data: photos } = await sanityFetch({ query: PHOTO_QUERY });
+
+  const dict = await getDictionary(locale);
 
   return (
     <div className="relative">
       <HomepageHero />
-      <SupportSection />
+      <SupportSection title={dict.support.title} />
 
-      <EventSection title={"EVENTS"} events={events} />
-      <GallerySection photos={photos} />
+      <EventSection
+        title={dict.events.title}
+        cta={dict.events.cta}
+        events={events}
+      />
+      <GallerySection
+        title={dict.gallery.title}
+        cta={dict.gallery.cta}
+        photos={photos}
+      />
     </div>
   );
 }

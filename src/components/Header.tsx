@@ -1,13 +1,16 @@
+import { getDictionary } from "@/app/(frontend)/[locale]/dictionaries";
 import AnimatedLink from "./AnimatedLink";
 
-export function Header() {
+export async function Header({ locale }: { locale: "en" | "no" }) {
+  const dict = await getDictionary(locale);
+
   return (
     <header className="z-10 fixed top-[0] left-[0] w-full flex justify-between font-chicle md:text-2xl">
       <AnimatedLink
         className="menu-button border-b border-r px-[20px] py-[12px] h-fit"
-        href="/"
+        href=""
       >
-        Home
+        {dict.header.home}
       </AnimatedLink>
       <ul className="flex items-center border-b border-l">
         <li>
@@ -15,7 +18,7 @@ export function Header() {
             className="menu-button h-full flex items-center border-r px-[20px] py-[12px] md:px-[32px] md:py-[24px]"
             href="/events"
           >
-            Events
+            {dict.header.events}
           </AnimatedLink>
         </li>
         <li>
@@ -23,7 +26,7 @@ export function Header() {
             className="menu-button h-full flex items-center px-[20px] py-[12px] md:px-[32px] md:py-[24px]"
             href="/media"
           >
-            Media
+            {dict.header.media}
           </AnimatedLink>
         </li>
       </ul>

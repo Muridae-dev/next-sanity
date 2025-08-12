@@ -27,7 +27,7 @@ export default async function FrontendLayout({
         <TransitionElement />
         <ClientSceneWrapper scene="gradients" key="scene" />
         <section className="min-h-screen">
-          <Header />
+          <Header locale={locale as "en" | "no"} />
           <SmoothScrollProvider>{children}</SmoothScrollProvider>
           <SanityLive />
           <Footer />

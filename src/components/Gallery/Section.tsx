@@ -8,17 +8,23 @@ import { useState } from "react";
 import AnimatedLink from "../AnimatedLink";
 
 export default function GallerySection({
+  title,
+  cta,
   photos,
 }: {
+  title: string;
+  cta: string;
   photos: PHOTO_QUERYResult;
 }) {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const selectedImage = currentIndex !== null ? photos[currentIndex] : null;
 
+  const splitCta = cta.split("::").filter(Boolean);
+
   return (
     <section className="w-full">
       <h2 className="text-center text-heading border-y">
-        <AnimatedText text="PHOTO GALLERY" />
+        <AnimatedText text={title} />
       </h2>
 
       <div className="flex flex-col md:flex-row gap-[12px] pt-[24px] px-[12px] justify-center">
@@ -28,19 +34,21 @@ export default function GallerySection({
           </button>
         ))}
       </div>
+
       <div className="font-chicle text-center py-[12px] text-2xl md:text-4xl md:py-[24px]">
-        Find more images in our{" "}
+        {splitCta[0]}
         <AnimatedLink href="/media" className="underline">
-          media section
+          {splitCta[1]}
         </AnimatedLink>{" "}
-        or on Instagram{" "}
+        {splitCta[2]}
         <a
           className="underline"
           href="https://www.instagram.com/henningsvaer.pride/"
         >
-          @henningsvær.pride
+          {splitCta[3]}
         </a>
       </div>
+
       <ImageModal
         photo={selectedImage}
         closeModal={() => setCurrentIndex(null)}

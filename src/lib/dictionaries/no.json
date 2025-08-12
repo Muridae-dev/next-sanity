@@ -1,0 +1,18 @@
+{
+  "header": {
+    "events": "Hendelser",
+    "media": "Media",
+    "home": "Hjem"
+  },
+  "support": {
+    "title": "Støtte Pride"
+  },
+  "events": {
+    "title": "Hendelser",
+    "cta": "Mer info"
+  },
+  "gallery": {
+    "title": "Fotogalleri",
+    "cta": "Finn flere bilder i vår ::medieseksjon:: eller på Instagram ::@henningsvær.pride::"
+  }
+}

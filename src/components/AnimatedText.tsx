@@ -47,7 +47,7 @@ export default function AnimatedText({ text }: AnimatedTextProps) {
       {text.split(" ").map((word, i, arr) => (
         <span
           key={i}
-          className="letter inline-block transform translate-y-full opacity-0"
+          className="letter inline-block transform translate-y-full opacity-0 uppercase"
         >
           {word}
           {i < arr.length - 1 ? "\u00A0" : ""}

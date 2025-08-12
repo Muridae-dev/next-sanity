@@ -1,7 +1,7 @@
 import AnimatedText from "../AnimatedText";
 import SupportCard from "./Card";
 
-export default function SupportSection() {
+export default function SupportSection({ title }: { title: string }) {
   const data = [
     {
       title: "Raise your flag!",
@@ -24,7 +24,7 @@ export default function SupportSection() {
     <>
       <div className="h-content w-full border-t border-b flex justify-center items-center">
         <h2 className="text-heading w-fit h-fit">
-          <AnimatedText text="SUPPORTING PRIDE" />
+          <AnimatedText text={title} />
         </h2>
       </div>
       <div className="py-[12px] border-b md:py-0 md:grid md:grid-cols-3">
