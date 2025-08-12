@@ -1,7 +1,7 @@
-import { getDictionary } from "@/app/(frontend)/[locale]/dictionaries";
+import { getDictionary, locales } from "@/app/(frontend)/[locale]/dictionaries";
 import AnimatedLink from "./AnimatedLink";
 
-export async function Header({ locale }: { locale: "en" | "no" }) {
+export async function Header({ locale }: { locale: locales }) {
   const dict = await getDictionary(locale);
 
   return (
@@ -23,10 +23,26 @@ export async function Header({ locale }: { locale: "en" | "no" }) {
         </li>
         <li>
           <AnimatedLink
-            className="menu-button h-full flex items-center px-[20px] py-[12px] md:px-[32px] md:py-[24px]"
+            className="menu-button h-full flex items-center border-r px-[20px] py-[12px] md:px-[32px] md:py-[24px]"
             href="/media"
           >
             {dict.header.media}
+          </AnimatedLink>
+        </li>
+        <li>
+          <AnimatedLink
+            className="menu-button h-full flex items-center border-r px-[20px] py-[12px] md:px-[24px] md:py-[24px]"
+            href="/en"
+          >
+            🇬🇧
+          </AnimatedLink>
+        </li>
+        <li>
+          <AnimatedLink
+            className="menu-button h-full flex items-center px-[20px] py-[12px] md:px-[24px] md:py-[24px]"
+            href="/no"
+          >
+            🇳🇴
           </AnimatedLink>
         </li>
       </ul>

@@ -21,9 +21,6 @@ export default function EventSection({
           return <EventCard key={event._id} cta={cta} event={event} />;
         })}
       </div>
-      {/* <h2 className="text-center text-heading border-y">
-        <AnimatedText text="AND MORE HERE!" />
-      </h2> */}
     </section>
   );
 }

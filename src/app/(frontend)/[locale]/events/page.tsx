@@ -2,12 +2,12 @@ import EventSection from "@/components/Event/Section";
 import { sanityFetch } from "@/sanity/lib/live";
 import { EVENTS_QUERY_ALL } from "@/sanity/lib/queries";
 import { EVENTS_QUERY_ALLResult } from "@/sanity/types";
-import { getDictionary } from "../dictionaries";
+import { getDictionary, locales } from "../dictionaries";
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "no" }>;
+  params: Promise<{ locale: locales }>;
 }) {
   const { locale } = await params;
   const { data: events } = await sanityFetch({

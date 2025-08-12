@@ -15,7 +15,9 @@ const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
     const router = useRouter();
     const currentPath = usePathname();
     const params = useParams();
-    const targetPath = "/" + params.locale + href.toString();
+    const targetPath = ["/no", "/en"].includes(href.toString())
+      ? href.toString() + currentPath.replace(/^\/(no|en)/, "")
+      : "/" + params.locale + href.toString();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
@@ -42,7 +44,7 @@ const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
     return (
       <Link
         ref={ref}
-        href={`/${params.locale}${href}`}
+        href={targetPath}
         onClick={handleClick}
         className={className}
         {...props}
