@@ -14,8 +14,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function EventCard({
   event,
+  cta,
 }: {
   event: EVENTS_QUERYResult[number] | EVENTS_QUERY_ALLResult[number];
+  cta: string;
 }) {
   const elRef = useRef<HTMLAnchorElement>(null);
 
@@ -48,7 +50,7 @@ export default function EventCard({
   return (
     <AnimatedLink
       ref={elRef}
-      href={`events/${event.slug?.current}`}
+      href={`/events/${event.slug?.current}`}
       className="group flex flex-col opacity-0"
     >
       <figure className="h-[200px] w-full overflow-hidden flex items-center rounded">
@@ -83,7 +85,7 @@ export default function EventCard({
         <span className="border bg-[rgba(0,0,255,0.2)] px-[10px] rounded-tr rounded-bl">
           →
         </span>
-        <span className="group-hover:underline">More info</span>
+        <span className="group-hover:underline">{cta}</span>
       </div>
     </AnimatedLink>
   );

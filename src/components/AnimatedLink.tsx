@@ -1,7 +1,7 @@
 "use client";
 
 import Link, { LinkProps } from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
 import React, { forwardRef } from "react";
 
@@ -14,7 +14,10 @@ const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
   ({ href, children, className, ...props }, ref) => {
     const router = useRouter();
     const currentPath = usePathname();
-    const targetPath = href.toString();
+    const params = useParams();
+    const targetPath = ["/no", "/en"].includes(href.toString())
+      ? href.toString() + currentPath.replace(/^\/(no|en)/, "")
+      : "/" + params.locale + href.toString();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
@@ -41,7 +44,7 @@ const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
     return (
       <Link
         ref={ref}
-        href={href}
+        href={targetPath}
         onClick={handleClick}
         className={className}
         {...props}

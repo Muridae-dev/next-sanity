@@ -7,8 +7,10 @@ import { PHOTO_QUERY_ALLResult } from "@/sanity/types";
 import { useState } from "react";
 
 export default function SectionMedia({
+  title,
   photos,
 }: {
+  title: string;
   photos: Record<string, PHOTO_QUERY_ALLResult>;
 }) {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
@@ -21,7 +23,7 @@ export default function SectionMedia({
   return (
     <div className="w-full pb-[24px]">
       <h1 className="text-center text-heading">
-        <AnimatedText text="MEDIA" />
+        <AnimatedText text={title} />
       </h1>
 
       <div className="flex flex-col px-[12px] gap-[24px]">

@@ -1,5 +1,6 @@
 import { DocumentTextIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+import { baseLanguage } from "./localeStringType";
 
 export const eventType = defineType({
   name: "event",
@@ -9,7 +10,7 @@ export const eventType = defineType({
   fields: [
     defineField({
       name: "title",
-      type: "string",
+      type: "localeString",
     }),
     defineField({
       name: "slug",
@@ -58,7 +59,7 @@ export const eventType = defineType({
   ],
   preview: {
     select: {
-      title: "title",
+      title: `title.${baseLanguage?.id}`,
       media: "mainImage",
     },
     prepare(selection) {

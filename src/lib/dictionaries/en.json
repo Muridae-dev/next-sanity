@@ -1,0 +1,18 @@
+{
+  "header": {
+    "events": "Events",
+    "media": "Media",
+    "home": "Home"
+  },
+  "support": {
+    "title": "Supporting Pride"
+  },
+  "events": {
+    "title": "Events",
+    "cta": "More info"
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "cta": "Find more images in our ::media section:: or on Instagram ::@henningsvær.pride::"
+  }
+}

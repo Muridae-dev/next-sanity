@@ -71,7 +71,7 @@ export type Event = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  title?: LocaleString;
   slug?: Slug;
   mainImage?: {
     asset?: {
@@ -194,6 +194,12 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
+export type LocaleString = {
+  _type: "localeString";
+  en?: string;
+  no?: string;
+};
+
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
   background?: string;
@@ -312,11 +318,11 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Photo | PhotographerOption | YearOption | Event | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Photo | PhotographerOption | YearOption | Event | Category | BlockContent | LocaleString | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: EVENTS_QUERY
-// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc)[0...12]{  _id,  title,  slug,  mainImage,  eventDate,  shortDescription,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  )}
+// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc)[0...12]{  _id,  "title": select($locale == "en" => title.en, $locale == "no" => title.no),  slug,  mainImage,  eventDate,  shortDescription,}
 export type EVENTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -366,10 +372,9 @@ export type EVENTS_QUERYResult = Array<{
     _type: "image";
     _key: string;
   }> | null;
-  categories: Array<never>;
 }>;
 // Variable: EVENTS_QUERY_ALL
-// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc){  _id,  title,  slug,  mainImage,  eventDate,  shortDescription,  "year": array::join(string::split(eventDate, "")[0...4], "")}
+// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc){  _id,  "title": select($locale == "en" => title.en, $locale == "no" => title.no),  slug,  mainImage,  eventDate,  shortDescription,  "year": array::join(string::split(eventDate, "")[0...4], "")}
 export type EVENTS_QUERY_ALLResult = Array<{
   _id: string;
   title: string | null;
@@ -427,7 +432,7 @@ export type EVENTS_SLUGS_QUERYResult = Array<{
   slug: string | null;
 }>;
 // Variable: EVENT_QUERY
-// Query: *[_type == "event" && slug.current == $slug][0]{  _id,  title,  slug,  mainImage,  eventDate,  body,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  )}
+// Query: *[_type == "event" && slug.current == $slug][0]{  _id,  "title": select($locale == "en" => title.en, $locale == "no" => title.no),  slug,  mainImage,  eventDate,  body,}
 export type EVENT_QUERYResult = {
   _id: string;
   title: string | null;
@@ -477,7 +482,6 @@ export type EVENT_QUERYResult = {
     _type: "image";
     _key: string;
   }> | null;
-  categories: Array<never>;
 } | null;
 // Variable: PHOTO_QUERY
 // Query: *[_type == "photo"][0...6]{  _id,  title,  image,  year->{    year  },  photographer->{    name  }}
@@ -534,10 +538,10 @@ export type PHOTO_QUERY_ALLResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc)[0...12]{\n  _id,\n  title,\n  slug,\n  mainImage,\n  eventDate,\n  shortDescription,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  )\n}": EVENTS_QUERYResult;
-    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc){\n  _id,\n  title,\n  slug,\n  mainImage,\n  eventDate,\n  shortDescription,\n  \"year\": array::join(string::split(eventDate, \"\")[0...4], \"\")\n\n}": EVENTS_QUERY_ALLResult;
+    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc)[0...12]{\n  _id,\n  \"title\": select($locale == \"en\" => title.en, $locale == \"no\" => title.no),\n  slug,\n  mainImage,\n  eventDate,\n  shortDescription,\n}": EVENTS_QUERYResult;
+    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc){\n  _id,\n  \"title\": select($locale == \"en\" => title.en, $locale == \"no\" => title.no),\n  slug,\n  mainImage,\n  eventDate,\n  shortDescription,\n  \"year\": array::join(string::split(eventDate, \"\")[0...4], \"\")\n\n}": EVENTS_QUERY_ALLResult;
     "*[_type == \"event\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": EVENTS_SLUGS_QUERYResult;
-    "*[_type == \"event\" && slug.current == $slug][0]{\n  _id,\n  title,\n  slug,\n  mainImage,\n  eventDate,\n  body,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  )\n}": EVENT_QUERYResult;
+    "*[_type == \"event\" && slug.current == $slug][0]{\n  _id,\n  \"title\": select($locale == \"en\" => title.en, $locale == \"no\" => title.no),\n  slug,\n  mainImage,\n  eventDate,\n  body,\n}": EVENT_QUERYResult;
     "*[_type == \"photo\"][0...6]{\n  _id,\n  title,\n  image,\n  year->{\n    year\n  },\n  photographer->{\n    name\n  }\n}": PHOTO_QUERYResult;
     "*[_type == \"photo\"]{\n  _id,\n  title,\n  image,\n  year->{\n    year\n  },\n  photographer->{\n    name\n  }\n}": PHOTO_QUERY_ALLResult;
   }
