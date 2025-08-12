@@ -48,7 +48,7 @@ export default function EventCard({
   return (
     <AnimatedLink
       ref={elRef}
-      href={`events/${event.slug?.current}`}
+      href={`/events/${event.slug?.current}`}
       className="group flex flex-col opacity-0"
     >
       <figure className="h-[200px] w-full overflow-hidden flex items-center rounded">
