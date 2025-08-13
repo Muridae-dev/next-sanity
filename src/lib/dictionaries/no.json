@@ -5,7 +5,21 @@
     "home": "Hjem"
   },
   "support": {
-    "title": "Støtte Pride"
+    "title": "Støtte Pride",
+    "sections": [
+      {
+        "title": "Heis flagget!",
+        "description": "Vis din støtte ved å henge opp et regnbueflagg der du bor."
+      },
+      {
+        "title": "Kjøp vårt merch",
+        "description": "Vi selger capser, handlenett, klistremerker og flagg. Alle pengene går direkte til Henningsvær Pride. Du kan kjøpe merchen vår på MIN Henningsvær eller Secondhand & Div i Henningsvær."
+      },
+      {
+        "title": "Følg oss på Instagram",
+        "description": "@henningsvaer.pride Her deler vi bilder og informasjon om Pride-uka."
+      }
+    ]
   },
   "events": {
     "title": "Hendelser",
