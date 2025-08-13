@@ -5,7 +5,21 @@
     "home": "Home"
   },
   "support": {
-    "title": "Supporting Pride"
+    "title": "Supporting Pride",
+    "sections": [
+      {
+        "title": "Raise your flag!",
+        "description": "Show your support by hanging a rainbow flag where you live."
+      },
+      {
+        "title": "Buy our Merch",
+        "description": "We sell caps, shopping nets, stickers and flags. All the money goes directly to Henningsvær Pride. You can buy our merch at MIN Henningsvær or secondhand and div in Henningsvær."
+      },
+      {
+        "title": "Follow us on Instagram",
+        "description": "@henningsvaer.pride Here we share pictures and information about Pride week."
+      }
+    ]
   },
   "events": {
     "title": "Events",

@@ -1,6 +1,6 @@
 import { defineType } from "sanity";
 
-const supportedLanguages = [
+export const supportedLanguages = [
   { id: "en", title: "English", isDefault: true },
   { id: "no", title: "Norweigan" },
 ];

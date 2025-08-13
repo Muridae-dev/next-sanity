@@ -7,7 +7,7 @@ export const EVENTS_QUERY =
   slug,
   mainImage,
   eventDate,
-  shortDescription,
+  "shortDescription": select($locale == "en" => shortDescription.en, $locale == "no" => shortDescription.no),
 }`);
 
 export const EVENTS_QUERY_ALL =
@@ -17,7 +17,7 @@ export const EVENTS_QUERY_ALL =
   slug,
   mainImage,
   eventDate,
-  shortDescription,
+  "shortDescription": select($locale == "en" => shortDescription.en, $locale == "no" => shortDescription.no),
   "year": array::join(string::split(eventDate, "")[0...4], "")
 
 }`);
@@ -34,7 +34,8 @@ export const EVENT_QUERY =
   slug,
   mainImage,
   eventDate,
-  body,
+  "body": select($locale == "en" => body.en, $locale == "no" => body.no),
+
 }`);
 
 export const PHOTO_QUERY = defineQuery(`*[_type == "photo"][0...6]{

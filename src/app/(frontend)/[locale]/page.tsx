@@ -17,6 +17,7 @@ export default async function Page({
     query: EVENTS_QUERY,
     params: { locale },
   });
+
   const { data: photos } = await sanityFetch({ query: PHOTO_QUERY });
 
   const dict = await getDictionary(locale);
@@ -24,7 +25,10 @@ export default async function Page({
   return (
     <div className="relative">
       <HomepageHero />
-      <SupportSection title={dict.support.title} />
+      <SupportSection
+        title={dict.support.title}
+        sections={dict.support.sections}
+      />
 
       <EventSection
         title={dict.events.title}

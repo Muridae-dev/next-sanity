@@ -87,68 +87,8 @@ export type Event = {
     _type: "image";
   };
   eventDate?: string;
-  shortDescription?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  body?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
+  shortDescription?: BlockContent;
+  body?: BlockContent;
 };
 
 export type Category = {
@@ -162,37 +102,45 @@ export type Category = {
   description?: string;
 };
 
-export type BlockContent = Array<{
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
+export type BlockContent = {
+  _type: "blockContent";
+  en?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
     _key: string;
   }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-  listItem?: "bullet";
-  markDefs?: Array<{
-    href?: string;
-    _type: "link";
+  no?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
     _key: string;
   }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-} | {
-  asset?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-  };
-  media?: unknown;
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  alt?: string;
-  _type: "image";
-  _key: string;
-}>;
+};
 
 export type LocaleString = {
   _type: "localeString";
@@ -322,7 +270,7 @@ export type AllSanitySchemaTypes = Photo | PhotographerOption | YearOption | Eve
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: EVENTS_QUERY
-// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc)[0...12]{  _id,  "title": select($locale == "en" => title.en, $locale == "no" => title.no),  slug,  mainImage,  eventDate,  shortDescription,}
+// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc)[0...12]{  _id,  "title": select($locale == "en" => title.en, $locale == "no" => title.no),  slug,  mainImage,  eventDate,  "shortDescription": select($locale == "en" => shortDescription.en, $locale == "no" => shortDescription.no),}
 export type EVENTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -358,23 +306,10 @@ export type EVENTS_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
   }> | null;
 }>;
 // Variable: EVENTS_QUERY_ALL
-// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc){  _id,  "title": select($locale == "en" => title.en, $locale == "no" => title.no),  slug,  mainImage,  eventDate,  shortDescription,  "year": array::join(string::split(eventDate, "")[0...4], "")}
+// Query: *[_type == "event" && defined(slug.current)]|order(eventDate desc){  _id,  "title": select($locale == "en" => title.en, $locale == "no" => title.no),  slug,  mainImage,  eventDate,  "shortDescription": select($locale == "en" => shortDescription.en, $locale == "no" => shortDescription.no),  "year": array::join(string::split(eventDate, "")[0...4], "")}
 export type EVENTS_QUERY_ALLResult = Array<{
   _id: string;
   title: string | null;
@@ -410,19 +345,6 @@ export type EVENTS_QUERY_ALLResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
   }> | null;
   year: string | null;
 }>;
@@ -432,7 +354,7 @@ export type EVENTS_SLUGS_QUERYResult = Array<{
   slug: string | null;
 }>;
 // Variable: EVENT_QUERY
-// Query: *[_type == "event" && slug.current == $slug][0]{  _id,  "title": select($locale == "en" => title.en, $locale == "no" => title.no),  slug,  mainImage,  eventDate,  body,}
+// Query: *[_type == "event" && slug.current == $slug][0]{  _id,  "title": select($locale == "en" => title.en, $locale == "no" => title.no),  slug,  mainImage,  eventDate,  "body": select($locale == "en" => body.en, $locale == "no" => body.no),}
 export type EVENT_QUERYResult = {
   _id: string;
   title: string | null;
@@ -467,19 +389,6 @@ export type EVENT_QUERYResult = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
     _key: string;
   }> | null;
 } | null;
@@ -538,10 +447,10 @@ export type PHOTO_QUERY_ALLResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc)[0...12]{\n  _id,\n  \"title\": select($locale == \"en\" => title.en, $locale == \"no\" => title.no),\n  slug,\n  mainImage,\n  eventDate,\n  shortDescription,\n}": EVENTS_QUERYResult;
-    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc){\n  _id,\n  \"title\": select($locale == \"en\" => title.en, $locale == \"no\" => title.no),\n  slug,\n  mainImage,\n  eventDate,\n  shortDescription,\n  \"year\": array::join(string::split(eventDate, \"\")[0...4], \"\")\n\n}": EVENTS_QUERY_ALLResult;
+    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc)[0...12]{\n  _id,\n  \"title\": select($locale == \"en\" => title.en, $locale == \"no\" => title.no),\n  slug,\n  mainImage,\n  eventDate,\n  \"shortDescription\": select($locale == \"en\" => shortDescription.en, $locale == \"no\" => shortDescription.no),\n}": EVENTS_QUERYResult;
+    "*[_type == \"event\" && defined(slug.current)]|order(eventDate desc){\n  _id,\n  \"title\": select($locale == \"en\" => title.en, $locale == \"no\" => title.no),\n  slug,\n  mainImage,\n  eventDate,\n  \"shortDescription\": select($locale == \"en\" => shortDescription.en, $locale == \"no\" => shortDescription.no),\n  \"year\": array::join(string::split(eventDate, \"\")[0...4], \"\")\n\n}": EVENTS_QUERY_ALLResult;
     "*[_type == \"event\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": EVENTS_SLUGS_QUERYResult;
-    "*[_type == \"event\" && slug.current == $slug][0]{\n  _id,\n  \"title\": select($locale == \"en\" => title.en, $locale == \"no\" => title.no),\n  slug,\n  mainImage,\n  eventDate,\n  body,\n}": EVENT_QUERYResult;
+    "*[_type == \"event\" && slug.current == $slug][0]{\n  _id,\n  \"title\": select($locale == \"en\" => title.en, $locale == \"no\" => title.no),\n  slug,\n  mainImage,\n  eventDate,\n  \"body\": select($locale == \"en\" => body.en, $locale == \"no\" => body.no),\n\n}": EVENT_QUERYResult;
     "*[_type == \"photo\"][0...6]{\n  _id,\n  title,\n  image,\n  year->{\n    year\n  },\n  photographer->{\n    name\n  }\n}": PHOTO_QUERYResult;
     "*[_type == \"photo\"]{\n  _id,\n  title,\n  image,\n  year->{\n    year\n  },\n  photographer->{\n    name\n  }\n}": PHOTO_QUERY_ALLResult;
   }
