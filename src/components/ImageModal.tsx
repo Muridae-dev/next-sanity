@@ -51,6 +51,7 @@ export default function ImageModal({
       </button>
       {photo?.image && (
         <Image
+          className=""
           src={urlFor(photo.image)
             .width(width)
             .height(height)

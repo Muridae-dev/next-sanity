@@ -6,6 +6,11 @@
   --color-blue: rgb(0, 42, 255);
   --color-menu-button: rgba(110, 0, 255, 0.2);
   --color-menu-button-hover: rgba(110, 0, 255, 0.3);
+  --color-menu-button-active: rgba(110, 0, 255, 0.45);
+}
+
+li::marker {
+  color: rgb(0, 42, 255);
 }
 
 .menu-button {
@@ -24,8 +29,12 @@
   @apply absolute h-8 w-8 cursor-pointer text-7xl text-white disabled:hidden;
 
   &.--pointer {
-    @apply bottom-24 md:bottom-1/2 md:translate-y-1/2;
+    @apply bottom-1/2 translate-y-1/2;
   }
+}
+
+.prose {
+  @apply prose-strong:text-blue prose-li:text-left;
 }
 
 .grain-filter {

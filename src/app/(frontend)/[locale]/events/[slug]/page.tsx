@@ -23,42 +23,39 @@ export default async function Page({
   }
 
   return (
-    <main className="relative pt-[50vh] pb-[32px]">
-      <div className="translate-y-[-50%] flex flex-col items-center justify-center">
+    <main className="relative pt-[64px] md:pt-[84px] pb-[32px]">
+      <div className="flex flex-col items-center justify-center px-[12px]">
         <h1 className="text-heading w-fit h-fit pl-[12px] pr-[24px] pb-[24px] text-center">
           {event.title}
         </h1>
-        <div className="pt-[24px]">
-          {event.body ? (
-            <div className="lg:col-span-7 px-[8px] lg:col-start-6 prose text-center text-inherit pb-[12px]">
-              <PortableText value={event.body} components={components} />
-            </div>
-          ) : null}
+
+        <div className="h-[600px] max-h-fit overflow-hidden relative flex justify-center">
+          <figure className="rounded overflow-hidden w-fit max-h-fit h-[600px] flex items-center md:max-w-[900px]">
+            {event.mainImage && (
+              <Image
+                src={urlFor(event.mainImage)
+                  .width(1600)
+                  .height(800)
+                  .quality(100)
+                  .auto("format")
+                  .url()}
+                alt={event.mainImage?.alt || "Event image"}
+                width={1400}
+                height={800}
+              />
+            )}
+          </figure>
         </div>
 
-        <div>
-          <div className="font-bold">
-            {dayjs(event.eventDate).format("D MMMM YYYY")} ❤️ Location
+        <div className="font-bold pt-[12px]">
+          {dayjs(event.eventDate).format("D MMMM YYYY")}
+        </div>
+
+        {event.body ? (
+          <div className="max-w-[900px] pt-[24px] px-[8px] md:px-0 prose text-inherit pb-[12px]">
+            <PortableText value={event.body} components={components} />
           </div>
-        </div>
-      </div>
-
-      <div className="h-[600px] max-h-fit overflow-hidden relative flex justify-center">
-        <figure className="rounded overflow-hidden w-fit max-w-[90dvw] max-h-fit h-[600px] flex items-center opacity-95">
-          {event.mainImage && (
-            <Image
-              src={urlFor(event.mainImage)
-                .width(1600)
-                .height(800)
-                .quality(100)
-                .auto("format")
-                .url()}
-              alt={event.mainImage?.alt || "Event image"}
-              width={1400}
-              height={800}
-            />
-          )}
-        </figure>
+        ) : null}
       </div>
     </main>
   );

@@ -53,9 +53,10 @@ export default function EventCard({
       href={`/events/${event.slug?.current}`}
       className="group flex flex-col opacity-0"
     >
-      <figure className="h-[200px] w-full overflow-hidden flex items-center rounded">
+      <figure className="w-full overflow-hidden flex items-center rounded">
         {event.mainImage && (
           <Image
+            className="w-full"
             src={urlFor(event.mainImage)
               .width(800)
               .height(400)
