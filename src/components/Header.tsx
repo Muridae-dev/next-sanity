@@ -31,7 +31,7 @@ export async function Header({ locale }: { locale: locales }) {
         </li>
         <li>
           <AnimatedLink
-            className="menu-button h-full flex items-center border-r px-[20px] py-[12px] md:px-[24px] md:py-[24px]"
+            className={`menu-button h-full border-r flex items-center px-[20px] py-[12px] md:px-[24px] md:py-[24px] ${locale === "en" ? "!bg-menu-button-active" : ""}`}
             href="/en"
           >
             🇬🇧
@@ -39,7 +39,7 @@ export async function Header({ locale }: { locale: locales }) {
         </li>
         <li>
           <AnimatedLink
-            className="menu-button h-full flex items-center px-[20px] py-[12px] md:px-[24px] md:py-[24px]"
+            className={`menu-button h-full flex items-center px-[20px] py-[12px] md:px-[24px] md:py-[24px] ${locale === "no" ? "!bg-menu-button-active" : ""}`}
             href="/no"
           >
             🇳🇴
